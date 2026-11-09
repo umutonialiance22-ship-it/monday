@@ -1,7 +1,17 @@
-async function sleep(millis) {
-    if (!Number.isInteger(millis) || millis < 1 || millis > 1000) {
-        throw new RangeError("millis must be an integer between 1 and 1000");
-    }
-
-    return new Promise((resolve) => setTimeout(resolve, millis));
+function sleep(millis) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, millis);
+    });
 }
+
+async function sendDeliveryNotification() {
+    console.log("Preparing delivery notification...");
+
+    await sleep(1000);
+
+    console.log("Your delivery is on its way!");
+}
+
+sendDeliveryNotification();
